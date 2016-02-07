@@ -1,1 +1,1 @@
-lein run -m spc.core
+web: lein run -m spc.core
