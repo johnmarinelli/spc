@@ -1,6 +1,6 @@
 (ns spc.core
-  (:use ring.adapter.jetty)
-  (:use ring.util.response))
+  (:use ring.adapter.jetty
+        ring.util.response))
 
 (defn handler [req]
   (response "Hello worldssss"))
@@ -9,4 +9,4 @@
   (-> handler))
 
 (defn -main []
-  (defonce server (run-jetty app { :port 8000 })))
+  (defonce server (run-jetty app { :port 8080 })))
