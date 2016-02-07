@@ -8,4 +8,5 @@
 (def app
   (-> handler))
 
-(defonce server (run-jetty app { :port 8000 }))
+(defn -main []
+  (defonce server (run-jetty app { :port 8000 })))
