@@ -1,12 +1,12 @@
 (ns spc.core
   (:use ring.adapter.jetty
-        ring.util.response))
-
-(defn handler [req]
-  (response "Hello worldssss"))
+        ring.middleware.not-modified
+        clostache.parser)
+  (:require [spc.handlers.index-handler :as index-handler]))
 
 (def app
-  (-> handler))
+  (-> index-handler/index-handler
+      (wrap-not-modified)))
 
 (defn -main []
   (let [port (Integer/parseInt (get (System/getenv) "PORT" "5000"))]
