@@ -9,4 +9,5 @@
   (-> handler))
 
 (defn -main []
-  (defonce server (run-jetty app { :port 8080 })))
+  ([let port (Integer/parseInt (get (System/getenv) "PORT" "5000"))]
+    (defonce server (run-jetty app { :port port }))))
