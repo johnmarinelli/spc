@@ -9,5 +9,11 @@
                  [ring/ring-jetty-adapter "1.4.0"]
                  [ring/ring-mock "0.3.0"]
                  [de.ubercode.clostache/clostache "1.4.0"]
-                 [compojure "1.4.0"]]
+                 [compojure "1.4.0"]
+                 [org.clojure/java.jdbc "0.4.1"]
+                 [org.postgresql/postgresql "9.2-1003-jdbc4"]
+                 [korma "0.4.2"]
+                 [ragtime "0.5.2"]]
+  :aliases {"migrate" ["run" "-m" "spc.migrate.do/migrate"]
+            "rollback" ["run" "-m" "spc.migrate.do/rollback"]}
   :main spc.core)
