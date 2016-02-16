@@ -30,4 +30,4 @@
   (let [initial-count (row-count "users_test")]
     (delete-user! (get-last-row-id "users_test") :db :users_test)
     (let [final-count (row-count "users_test")]
-      (is (= final-count (- initial-count 1))))))
+      (is (or (= final-count 0) (= final-count (- initial-count 1)))))))
