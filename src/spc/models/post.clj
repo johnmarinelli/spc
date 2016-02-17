@@ -3,11 +3,16 @@
 
 ; post model
 (def post 
-  (ref (fn [title body user_id] {:title title :body body :user_id user_id })))
+  (ref (fn [title body user-id] {:title title :body body :user_id user-id })))
 
-(defn create-post! [title body user_id & {:keys [db] 
-  ())
+(defn create-post! [title body user-id & {:keys [db] :or {db :posts}}] 
+  (insert db (post title body user-id)))
 
-(defn get-post [post_id]
+(defn get-post [post-id & {:keys [db] :or {db :posts}}]
+  (get-row db post-id))
 
+(defn update-post! [new-vals id & {:keys [db] :or {db :posts}}]
+  (update-row db new-vals id))
 
+(defn delete-post! [id & {:keys [db] :or {db :posts}}]
+  (delete db id))

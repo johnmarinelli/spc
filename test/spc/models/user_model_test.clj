@@ -1,17 +1,7 @@
 (ns spc.models.user-model-test
   (:require [clojure.test :refer :all]
-            [clojure.java.jdbc :as sql]
-            [spc.models.base :refer :all]
+            [spc.models.model-test-utils :refer :all]
             [spc.models.user :refer :all]))
-
-(defn row-count [table]
-  (:count (first (sql/query db-connection [(str "SELECT COUNT(*) FROM " table)]))))
-
-(defn get-last-row [table]
-  (first (sql/query db-connection [(str "SELECT * FROM " table " ORDER BY created_at DESC LIMIT 1")])))
-
-(defn get-last-row-id [table]
-  (:id (get-last-row table)))
 
 (deftest user-create-test
   (let [initial-count (row-count "users_test")]
