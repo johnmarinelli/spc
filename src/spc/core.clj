@@ -3,6 +3,7 @@
         ring.middleware.not-modified
         clostache.parser)
   (:require [spc.handlers.index-handler :as index-handler]
+            [spc.handlers.post-handler :as post-handler]
             [compojure.core :refer :all]
             [compojure.route :as route]
             [compojure.handler :as handler]
@@ -11,6 +12,7 @@
 (defroutes main-routes
   (GET "/" [] (-> index-handler/index-handler 
                   (wrap-not-modified)))
+  (GET "/post/new" [] (-> post-handler/post-handler))
   (route/resources "/"))
 
 (def app
