@@ -3,6 +3,11 @@
             [spc.models.model-test-utils :refer :all]
             [spc.models.user :refer :all]))
 
+(defn destroy-test-users [_]
+  (delete-test-table "users"))
+
+(use-fixtures :once destroy-test-users)
+
 (deftest user-create-test
   (let [initial-count (row-count "users_test")]
     (create-user! "username" "pw" "email" :db :users_test)

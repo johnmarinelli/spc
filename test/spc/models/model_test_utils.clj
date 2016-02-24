@@ -2,6 +2,9 @@
   (:require [clojure.java.jdbc :as sql]
             [spc.models.base :refer :all]))
 
+(defn delete-test-table [table]
+  sql/delete! db-connection (str table "_test"))
+
 (defn row-count [table]
   (:count (first (sql/query db-connection [(str "SELECT COUNT(*) FROM " table)]))))
 

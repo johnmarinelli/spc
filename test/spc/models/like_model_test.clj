@@ -3,11 +3,15 @@
             [spc.models.model-test-utils :refer :all]
             [spc.models.like :refer :all]))
 
+(defn destroy-test-likes [_]
+  (delete-test-table "likes"))
+
 (defn create-post-fixture [f]
   (create-test-post)
   (f)
   (delete-last-test-post))
 
+(use-fixtures :once destroy-test-likes)
 (use-fixtures :once create-post-fixture)
 
 (deftest like-create-test

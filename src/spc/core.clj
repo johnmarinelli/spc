@@ -13,6 +13,7 @@
   (GET "/" [] (-> index-handler/index-handler 
                   (wrap-not-modified)))
   (GET "/post/new" [] (-> post-handler/post-handler))
+  (POST "/post/create" [] (-> post-handler/post-handler)) ;this is dumb
   (route/resources "/"))
 
 (def app

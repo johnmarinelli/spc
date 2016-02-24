@@ -4,11 +4,15 @@
             [spc.models.base :refer :all]
             [spc.models.post :refer :all]))
 
+(defn destroy-test-posts [_]
+  (delete-test-table "posts"))
+
 (defn create-user-fixture [f]
   (create-test-user)
   (f)
   (delete-last-test-user))
 
+(use-fixtures :once destroy-test-posts)
 (use-fixtures :once create-user-fixture)
 
 (deftest post-create-test
