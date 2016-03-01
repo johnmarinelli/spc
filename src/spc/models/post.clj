@@ -11,6 +11,9 @@
 (defn get-post [post-id & {:keys [db] :or {db :posts}}]
   (get-row db post-id))
 
+(defn get-all-post-rows []
+  (get-rows :posts))
+
 (defn update-post! [new-vals id & {:keys [db] :or {db :posts}}]
   (update-row db new-vals id))
 

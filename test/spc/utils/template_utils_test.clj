@@ -3,7 +3,7 @@
             [spc.utils.template-utils :refer :all]))
 
 (deftest template-path-test
-  (let [template-str (template-path "test/mock")]
+  (let [template-str (#'spc.utils.template-utils/template-path "test/mock")]
     (is (= template-str "templates/test/mock.mustache.html"))))
 
 (deftest render-template-test 

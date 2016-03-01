@@ -14,6 +14,7 @@
                   (wrap-not-modified)))
   (GET "/post/new" [] (-> post-handler/post-handler))
   (POST "/post/create" [] (-> post-handler/post-handler)) ;this is dumb
+  (GET "/posts" [] (-> post-handler/post-handler))
   (route/resources "/"))
 
 (def app

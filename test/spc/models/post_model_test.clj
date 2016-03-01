@@ -35,3 +35,7 @@
     (delete-post! (get-last-row-id "posts_test") :db :posts_test)
     (let [final-count (row-count "posts_test")]
       (is (or (= final-count 0) (= final-count (- initial-count 1)))))))
+
+(deftest post-get-all-rows-test
+  (let [rows (get-all-post-rows)]
+    (is (= (count rows) 2))))

@@ -12,9 +12,12 @@
 (defn insert [^clojure.lang.Keyword table ^clojure.lang.PersistentArrayMap item]
   (sql/insert! db-connection table item))
 
+(defn get-rows [^clojure.lang.Keyword table]
+  (sql/query db-connection [(str "SELECT * FROM " (name table) ";")]))
+
 ; todo: lmao remove this when figure out how to dynamic sql w/ mutliple params
 (defn get-row [^clojure.lang.Keyword table ^Integer id]
-  (first (sql/query db-connection [(str "SELECT * FROM " table " WHERE ID = " id)])))
+  (first (sql/query db-connection [(str "SELECT * FROM " (name table) " WHERE ID = " id)])))
 
 (defn update-row [^clojure.lang.Keyword table ^clojure.lang.PersistentArrayMap new-vals ^Integer id]
   (sql/update! db-connection table new-vals ["id = ?" id]))

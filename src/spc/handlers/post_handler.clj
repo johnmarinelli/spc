@@ -12,4 +12,6 @@
       [:post "/post/create"] (let [title   (:title (:params req))
                                    body    (:body (:params req))
                                    user_id (Integer. (:user_id (:params req)))]
-                               (create-post! title body user_id)))))
+                               (create-post! title body user_id))
+      [:get "/posts"] (-> (response (template-utils/render-template "post/index" {:posts (get-all-post-rows)}))
+                          (content-type "text/html")))))
